@@ -1,0 +1,6 @@
+.button-container {
+  display: flex;
+  justify-content: flex-end; /* Buttons nach rechts schieben */
+  gap: 10px; /* Abstand zwischen den Buttons */
+  margin-top: 20px; /* Abstand nach oben zwischen Buttons und dem Text */
+}
