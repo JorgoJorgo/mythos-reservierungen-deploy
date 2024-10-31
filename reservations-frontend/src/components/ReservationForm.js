@@ -7,6 +7,7 @@ import Form from 'react-bootstrap/Form';
 function ReservationForm({ selectedDate, onReservationSaved }) {
   const formatDate = (date) => {
     const d = new Date(date);
+    const apiUrl = process.env.REACT_APP_API_URL;
     const formattedDate = `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`;
     return formattedDate;
   };
@@ -35,7 +36,7 @@ function ReservationForm({ selectedDate, onReservationSaved }) {
     e.preventDefault();
     try {
       const token = sessionStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/api/reservations', {
+      const response = await fetch('http://${apiUrl}/api/reservations', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -10,13 +10,13 @@ const Login = ({ onLogin }) => {
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const { username, password } = formData;
-
+  const apiUrl = process.env.REACT_APP_API_URL;
   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = async e => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:5000/api/auth/login', {
+      const response = await fetch('http://${apiUrl}/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

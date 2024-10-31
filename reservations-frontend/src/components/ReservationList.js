@@ -8,7 +8,7 @@ const ReservationList = ({ selectedDate }) => {
   const [reservations, setReservations] = useState([]);
   const [editReservationId, setEditReservationId] = useState(null);
   const [editedData, setEditedData] = useState({});
-
+  const apiUrl = process.env.REACT_APP_API_URL;
   useEffect(() => {
     fetchReservations(selectedDate);
   }, [selectedDate]);
@@ -18,7 +18,7 @@ const ReservationList = ({ selectedDate }) => {
       const formattedDate = formatDate(selectedDate);
       const token = sessionStorage.getItem('token');
       
-      const response = await fetch(`http://localhost:5000/api/reservations/dailyReservation?date=${formattedDate}`, {
+      const response = await fetch(`http://${apiUrl}/api/reservations/dailyReservation?date=${formattedDate}`, {
         headers: {
           'x-auth-token': token,
         },
